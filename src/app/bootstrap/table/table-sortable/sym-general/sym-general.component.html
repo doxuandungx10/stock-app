@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-xl-6">
+        <!-- <app-dashed-line-chart></app-dashed-line-chart> -->
+        <!-- <app-candlestick-basic></app-candlestick-basic> -->
+
+        <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [stroke]="chartOptions.stroke"
+            [fill]="chartOptions.fill"
+            [xaxis]="chartOptions.xaxis"
+            [markers]="chartOptions.markers"
+            [yaxis]="chartOptions.yaxis"
+            [tooltip]="chartOptions.tooltip"
+        ></apx-chart>
+      <br>
+      <div>asdfasdfadsfadsf</div>
+       <ul>
+         <li *ngFor="let new of listNews">
+          <div  style="font-size: 25px;font-weight: 700">{{new.EventTitle}}</div>
+           <div [innerHTML]="new.EventDescription"></div>
+           <hr>
+         </li>
+       </ul>
+
+    </div>
+
+    <div class="col-xl-6">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>Giá mở cửa</td>
+                        <td>26,5</td>
+                    </tr>
+                    <tr>
+                        <td>Giá cao nhất</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Giá thấp nhất</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>KLGD</td>
+                        <td>5,390,000</td>
+                    </tr>
+                    <tr>
+                        <td>Vốn hóa</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Dư mua</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Dư bán</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Biên độ 52 tuần</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

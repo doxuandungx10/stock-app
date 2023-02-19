@@ -1,0 +1,160 @@
+<!-- <p>You can introduce custom directives for table headers to sort columns</p>
+<div class="table-responsive">
+	<table class="table table-striped">
+	  <thead>
+	  <tr>
+		<th scope="col">#</th>
+		<th scope="col" sortable="name" (sort)="onSort($any($event))">Country</th>
+		<th scope="col" sortable="area" (sort)="onSort($any($event))">Area</th>
+		<th scope="col" sortable="population" (sort)="onSort($any($event))">Population</th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <tr *ngFor="let country of countries">
+		<th scope="row">{{ country.id }}</th>
+		<td>
+		  <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+		  {{ country.name }}
+		</td>
+		<td>{{ country.area | number }}</td>
+		<td>{{ country.population | number }}</td>
+	  </tr>
+	  </tbody>
+	</table>
+</div> -->
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" rowspan="2" sortable="symbol">Mã CK</th>
+        <th scope="col" rowspan="2" sortable="ref">T.C</th>
+        <th scope="col" rowspan="2" sortable="ceiling">Trần</th>
+        <th scope="col" rowspan="2" sortable="floor">Sàn</th>
+        <th class="text-center" scope="col" colspan="6">Bên mua</th>
+        <th class="text-center" scope="col" colspan="3">Khớp lệnh</th>
+        <th class="text-center" scope="col" colspan="6">Bên bán</th>
+        <th scope="col" rowspan="2">Tổng KL</th>
+        <th scope="col" rowspan="2">Dư mua</th>
+        <th scope="col" rowspan="2">Dư bán</th>
+        <th scope="col" rowspan="2">TB</th>
+        <th scope="col" rowspan="2">Cao</th>
+        <th scope="col" rowspan="2">Thấp</th>
+      </tr>
+      <tr>
+        <th scope="col">Giá 3</th>
+        <th scope="col">KL 3</th>
+        <th scope="col">Giá 2</th>
+        <th scope="col">KL 2</th>
+        <th scope="col">Giá 1</th>
+        <th scope="col">KL 1</th>
+
+        <th scope="col">Giá</th>
+        <th scope="col">KL</th>
+        <th scope="col">+/-</th>
+
+        <th scope="col">Giá 1</th>
+        <th scope="col">KL 1</th>
+        <th scope="col">Giá 2</th>
+        <th scope="col">KL 2</th>
+        <th scope="col">Giá 3</th>
+        <th scope="col">KL 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of stocks; let i = index">
+        <th (click)="open(replyModal, stock.sym)" class="{{stock.statusColor}}" scope="row">{{ stock.sym }}</th>
+        <td class="stock-r">{{ stock.r }}</td>
+        <td @fadeInOut class="stock-c">{{ stock.c }}</td>
+        <td class="stock-f">{{ stock.f }}</td>
+
+        <td class="status-{{stock.g1?.[2]}}" [ngClass]="{'bg-decrease': stock.g1?.[0] < currentStocks[i].g1[0], 'bg-increase': stock.g1?.[0] > currentStocks[i].g1[0]}">{{ stock.g1?.[0] }}</td>
+        <td class="status-{{stock.g1?.[2]}}" [ngClass]="{'bg-decrease': stock.g1?.[1] < currentStocks[i].g1[1], 'bg-increase': stock.g1?.[1] > currentStocks[i].g1[1]}">{{ stock.g1?.[1] }}</td>
+        <td class="status-{{stock.g2?.[2]}}" [ngClass]="{'bg-decrease': stock.g2?.[0] < currentStocks[i].g2[0], 'bg-increase': stock.g2?.[0] > currentStocks[i].g2[0]}">{{ stock.g2?.[0] }}</td>
+        <td class="status-{{stock.g2?.[2]}}" [ngClass]="{'bg-decrease': stock.g2?.[1] < currentStocks[i].g2[1], 'bg-increase': stock.g2?.[1] > currentStocks[i].g2[1]}">{{ stock.g2?.[1] }}</td>
+        <td class="status-{{stock.g3?.[2]}}" [ngClass]="{'bg-decrease': stock.g3?.[0] < currentStocks[i].g3[0], 'bg-increase': stock.g3?.[0] > currentStocks[i].g3[0]}">{{ stock.g3?.[0] }}</td>
+        <td class="status-{{stock.g3?.[2]}}" [ngClass]="{'bg-decrease': stock.g3?.[1] < currentStocks[i].g3[1], 'bg-increase': stock.g3?.[1] > currentStocks[i].g3[1]}">{{ stock.g3?.[1] }}</td>
+
+        <td class="{{stock.statusColor}}" [ngClass]="{'bg-decrease': stock.lastPrice !== currentStocks[i].lastPrice}">{{ stock.lastPrice }}</td>
+        <td class="{{stock.statusColor}}" [ngClass]="{'bg-decrease': stock.lastVolume !== currentStocks[i].lastVolume}">{{ stock.lastVolume }}</td>
+        <td class="{{stock.statusColor}}" [ngClass]="{'bg-decrease': stock.ot !== currentStocks[i].ot}">{{ stock.ot }}</td>
+
+        <td class="status-{{stock.g4?.[2]}}" [ngClass]="{'bg-decrease': stock.g4?.[0] < currentStocks[i].g4[0], 'bg-increase': stock.g4?.[0] > currentStocks[i].g4[0]}">{{ stock.g4?.[0] }}</td>
+        <td class="status-{{stock.g4?.[2]}}" [ngClass]="{'bg-decrease': stock.g4?.[1] < currentStocks[i].g4[1], 'bg-increase': stock.g4?.[1] > currentStocks[i].g4[1]}">{{ stock.g4?.[1] }}</td>
+        <td class="status-{{stock.g5?.[2]}}" [ngClass]="{'bg-decrease': stock.g5?.[0] < currentStocks[i].g5[0], 'bg-increase': stock.g5?.[0] > currentStocks[i].g5[0]}">{{ stock.g5?.[0] }}</td>
+        <td class="status-{{stock.g5?.[2]}}" [ngClass]="{'bg-decrease': stock.g5?.[1] < currentStocks[i].g5[1], 'bg-increase': stock.g5?.[1] > currentStocks[i].g5[1]}">{{ stock.g5?.[1] }}</td>
+        <td class="status-{{stock.g6?.[2]}}" [ngClass]="{'bg-decrease': stock.g6?.[0] < currentStocks[i].g6[0], 'bg-increase': stock.g6?.[0] > currentStocks[i].g6[0]}">{{ stock.g6?.[0] }}</td>
+        <td class="status-{{stock.g6?.[2]}}" [ngClass]="{'bg-decrease': stock.g6?.[1] < currentStocks[i].g6[1], 'bg-increase': stock.g6?.[1] > currentStocks[i].g6[1]}">{{ stock.g6?.[1] }}</td>
+
+        <td>{{ stock.lot }}</td>
+        <td>0</td>
+        <td>0</td>
+        <td class="{{stock.avePriceStatusColor}}">{{ stock.avePrice }}</td>
+        <td class="{{stock.highPriceStatusColor}}">{{ stock.highPrice }}</td>
+        <td class="{{stock.lowPriceStatusColor}}">{{ stock.lowPrice }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <nz-tabset>
+      <nz-tab nzTitle="Tab 1">Content of Tab Pane 1</nz-tab>
+      <nz-tab nzTitle="Tab 2">Content of Tab Pane 2</nz-tab>
+      <nz-tab nzTitle="Tab 3">Content of Tab Pane 3</nz-tab>
+    </nz-tabset>
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </ng-container>
+</nz-modal>
+
+<ng-template #replyModal let-modal size="xl">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Mã {{selectedSym}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="profile-tab">
+      <div class="custom-tab-1">
+        <ul class="nav nav-tabs" ngbNav #nav="ngbNav">
+          <li class="nav-item" ngbNavItem="posts"><a href="#my-posts" data-toggle="tab" class="nav-link" ngbNavLink>Tổng
+              quan</a>
+            <ng-template ngbNavContent>
+              <div class="card-body">
+                <app-sym-general></app-sym-general>
+              </div>
+            </ng-template>
+
+          </li>
+          <li class="nav-item" ngbNavItem="about-me"><a href="#about-me" data-toggle="tab" class="nav-link"
+              ngbNavLink>Biểu đồ</a>
+            <ng-template ngbNavContent>
+              <div class="card-body">
+                <app-sym-candlechart [sym]="selectedSym" [listChartData]="listChartData"></app-sym-candlechart>
+              </div>
+            </ng-template>
+
+          </li>
+          <li class="nav-item" ngbNavItem="profile-settings"><a href="#profile-settings" data-toggle="tab"
+              class="nav-link" ngbNavLink>Tài chính</a>
+            <ng-template ngbNavContent>
+              <app-sym-finance></app-sym-finance>
+            </ng-template>
+          </li>
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class=""></div>
+      </div>
+      <!-- Modal -->
+    </div>
+  </div>
+</ng-template>
+
+
+

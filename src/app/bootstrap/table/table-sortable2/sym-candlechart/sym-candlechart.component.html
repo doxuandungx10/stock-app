@@ -1,0 +1,33 @@
+<!-- <app-candlestick-basic></app-candlestick-basic> -->
+<div class="row">
+  <div class="col-xl-8">
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+      [yaxis]="chartOptions.yaxis" [title]="chartOptions.title"></apx-chart>
+  </div>
+
+  <div class="col-xl-4">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col" colspan="4" style="border-top: none">Lịch sử khớp lệnh</th>
+          </tr>
+          <tr>
+            <th scope="col">Thời gian</th>
+            <th scope="col">Khớp lệnh</th>
+            <th scope="col">Giá</th>
+            <th scope="col">+/-</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of lstData; let i = index">
+            <th scope="row">{{ item.time }}</th>
+            <th scope="row">{{ item.lastVol }}</th>
+            <th scope="row">{{ item.lastPrice }}</th>
+            <th scope="row">{{ item.change }}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
