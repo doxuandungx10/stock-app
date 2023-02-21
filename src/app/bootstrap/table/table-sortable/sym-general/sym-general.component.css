@@ -1,0 +1,7 @@
+.timeline {
+  padding: 2rem;
+}
+
+.timeline > li {
+  margin-bottom: 0px;
+}

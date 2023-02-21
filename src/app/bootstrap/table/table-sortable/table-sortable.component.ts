@@ -88,7 +88,7 @@ export class TableSortableComponent  {
       this.stockDetail = res;
     });
     this.stockDetailService.getHisOrderMatching(sym).subscribe((res:any) => {
-      this.hisOrderMatching = res;
+      this.hisOrderMatching = res.slice(0,200);
     });
     // const character = this.setDataChartDetails(1639038571,1673166631,sym);
     // const characterHomeworld = this.getDataChartDetails();

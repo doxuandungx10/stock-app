@@ -2,7 +2,6 @@
     <div class="col-xl-6">
         <!-- <app-dashed-line-chart></app-dashed-line-chart> -->
         <!-- <app-candlestick-basic></app-candlestick-basic> -->
-
         <apx-chart
             [series]="chartOptions.series"
             [chart]="chartOptions.chart"
@@ -13,16 +12,13 @@
             [yaxis]="chartOptions.yaxis"
             [tooltip]="chartOptions.tooltip"
         ></apx-chart>
-      <br>
-      <div>asdfasdfadsfadsf</div>
-       <ul>
-         <li *ngFor="let new of listNews">
-          <div  style="font-size: 25px;font-weight: 700">{{new.EventTitle}}</div>
-           <div [innerHTML]="new.EventDescription"></div>
-           <hr>
-         </li>
-       </ul>
-
+      <!-- <ul>
+        <li *ngFor="let new of listNews">
+        <div  style="font-size: 25px;font-weight: 700">{{new.EventTitle}}</div>
+          <div [innerHTML]="new.EventDescription"></div>
+          <hr>
+        </li>
+      </ul> -->
     </div>
 
     <div class="col-xl-6">
@@ -66,3 +62,35 @@
         </div>
     </div>
 </div>
+
+<!-- <div class="row">
+  <div class="col-xl-6">
+    <ngb-accordion *ngFor="let new of listNews">
+      <ngb-panel [title]="new.EventTitle" cardClass="prevent-accordion">
+        <ng-template ngbPanelContent>
+          <div [innerHTML]="new.EventDescription"></div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-xl-6" style="margin-top: -2rem">
+    <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll height370" [perfectScrollbar]>
+      <ul class="timeline">
+        <li *ngFor="let new of listNews">
+          <ngb-accordion>
+            <ngb-panel [title]="new.EventTitle" cardClass="prevent-accordion">
+              <ng-template ngbPanelContent>
+                <div [innerHTML]="new.EventDescription"></div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
