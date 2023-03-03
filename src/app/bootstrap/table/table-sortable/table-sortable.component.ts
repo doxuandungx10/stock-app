@@ -55,7 +55,7 @@ export class TableSortableComponent  {
 
   ngOnInit() {
     this.getNewStocks();
-    setInterval(() => this.getNewStocks(), 5000);
+    setInterval(() => this.getNewStocks(), 3000);
     console.log(this.listSymbol);
   }
 
@@ -84,9 +84,10 @@ export class TableSortableComponent  {
   }
 
   async getStockDetail(sym: any) {
-    this.stockDetailService.getBaseInfo(sym).subscribe((res:any) => {
-      this.stockDetail = res;
-    });
+    // this.stockDetailService.getBaseInfo(sym).subscribe((res:any) => {
+    //   console.log(this.stockDetail);
+    //   this.stockDetail = res;
+    // });
     this.stockDetailService.getHisOrderMatching(sym).subscribe((res:any) => {
       this.hisOrderMatching = res.slice(0,200);
     });
@@ -101,12 +102,12 @@ export class TableSortableComponent  {
    setTimeout(()=> this.getDataChartDetails(),1000);
   }
 
-  // async getHisOrderMatching(sym: any) {
-  //   this.stockDetailService.getHisOrderMatching(sym).subscribe((res:any) => {
-  //     this.hisOrderMatching = res;
-  //   });
-  // //  setTimeout(()=> this.getDataChartDetails(),100);
-  // }
+  async getHisOrderMatching(sym: any) {
+    this.stockDetailService.getHisOrderMatching(sym).subscribe((res:any) => {
+      this.hisOrderMatching = res;
+    });
+  //  setTimeout(()=> this.getDataChartDetails(),100);
+  }
 
   getOldStocks(): void {
     this.currentStocks = this.stocks;
@@ -134,7 +135,7 @@ export class TableSortableComponent  {
         setTimeout(() => {
           this.currentStocks = this.stocks;
           console.log("old stock",this.currentStocks);
-        }, 4000)
+        }, 2000)
 
         // // add class color
         // this.stocks = this.stocks.map(el => ({

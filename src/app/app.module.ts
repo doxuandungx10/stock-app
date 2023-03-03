@@ -1,3 +1,4 @@
+import { StockTreemapComponent } from './stock-treemap/stock-treemap.component';
 import { ShareModule } from './shared/share.module';
 import { AppConfigService } from './../app-config.service';
 import { NotificationService } from './service/notification.service';
@@ -1364,6 +1365,7 @@ export function configServiceFactory(config: AppConfigService) {
  SymCandlechartComponent,
  SymFinanceComponent,
  StockBoardComponent,
+ StockTreemapComponent
 
 
   ],

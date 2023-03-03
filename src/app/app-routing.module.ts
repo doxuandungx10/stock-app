@@ -1,3 +1,4 @@
+import { StockTreemapComponent } from './stock-treemap/stock-treemap.component';
 import { StockBoardComponent } from './stock-board/stock-board.component';
 import { AuthGuard } from './service/auth.guard';
 import { NgModule } from '@angular/core';
@@ -141,7 +142,7 @@ import { Error503Component } from './pages/error503/error503.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'admin/index',
+    redirectTo: 'admin/stock-board',
     pathMatch: 'full'
   },
   {
@@ -262,6 +263,7 @@ const routes: Routes = [
       {path: 'form-validate', component: FormValidateComponent},
 
       {path: 'stock-board', component: StockBoardComponent},
+      {path: 'stock-treemap', component: StockTreemapComponent},
     ]
   },
   {path: 'page-register', component: RegisterComponent},
