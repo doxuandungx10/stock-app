@@ -1,3 +1,4 @@
+import { StockDashboardComponent } from './stock-dashboard/stock-dashboard.component';
 import { StockTreemapComponent } from './stock-treemap/stock-treemap.component';
 import { StockBoardComponent } from './stock-board/stock-board.component';
 import { AuthGuard } from './service/auth.guard';
@@ -264,6 +265,7 @@ const routes: Routes = [
 
       {path: 'stock-board', component: StockBoardComponent},
       {path: 'stock-treemap', component: StockTreemapComponent},
+      {path: 'stock-dashboard', component: StockDashboardComponent},
     ]
   },
   {path: 'page-register', component: RegisterComponent},
