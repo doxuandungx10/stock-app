@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stock-dashboard.component.css']
 })
 export class StockDashboardComponent implements OnInit {
-
+  lstFundCode = ["TCBF", "TCEF", "TCFF"]
   constructor() { }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
 import {
   ChartComponent,
@@ -30,6 +30,8 @@ export type ChartOptions = {
   styleUrls: ['./mixed-line-column.component.css']
 })
 export class MixedLineColumnComponent implements OnInit {
+  @Input() fundCode = "";
+
   @ViewChild("chart") chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
@@ -39,12 +41,22 @@ export class MixedLineColumnComponent implements OnInit {
         {
           name: "Website Blog",
           type: "column",
-          data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+          data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160],
+          labels: {
+            style: {
+              colors: "white"
+            }
+          }
         },
         {
           name: "Social Media",
           type: "line",
-          data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+          data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16],
+          labels: {
+            style: {
+              colors: "white"
+            }
+          }
         }
       ],
       chart: {
@@ -55,7 +67,10 @@ export class MixedLineColumnComponent implements OnInit {
         width: [0, 4]
       },
       title: {
-        text: "Traffic Sources"
+        text: "Traffic Sources",
+        style: {
+          color: "white"
+        }
       },
       dataLabels: {
         enabled: true,
@@ -76,19 +91,30 @@ export class MixedLineColumnComponent implements OnInit {
         "12 Jan 2001"
       ],
       xaxis: {
-        type: "datetime"
+        type: "datetime",
+        labels: {
+          style: {
+            colors: "white"
+          }
+        }
       },
       yaxis: [
         {
           title: {
-            text: "Website Blog"
+            text: "Website Blog",
+            style: {
+              color: "white"
+            }
           }
         },
         {
           opposite: true,
           title: {
-            text: "Social Media"
-          }
+            text: "Social Media",
+            style: {
+              color: "white"
+            }
+          },
         }
       ]
     };
@@ -96,6 +122,7 @@ export class MixedLineColumnComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this.fundCode);
   }
 
 }

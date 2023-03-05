@@ -3,6 +3,26 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
+          <div class="profile-tab">
+            <div class="custom-tab-1">
+              <ul class="nav nav-tabs" ngbNav #nav="ngbNav">
+                <li *ngFor="let tab of lstFundCode" class="nav-item" [ngbNavItem]="tab"><a href="#my-posts"
+                    data-toggle="tab" class="nav-link" ngbNavLink>{{tab}}</a>
+                  <ng-template ngbNavContent>
+                    <div class="card-body">
+                      <app-mixed-line-column [fundCode]="tab"></app-mixed-line-column>
+                    </div>
+                  </ng-template>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav" class=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="card">
           <div class="card-header">
             <h4 class="card-title">Top đột phá</h4>
           </div>
