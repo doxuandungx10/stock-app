@@ -55,7 +55,7 @@ export class TableSortableComponent  {
 
   ngOnInit() {
     this.getNewStocks();
-    setInterval(() => this.getNewStocks(), 3000);
+    setInterval(() => this.getNewStocks(), 300);
     console.log(this.listSymbol);
   }
 
@@ -135,7 +135,7 @@ export class TableSortableComponent  {
         setTimeout(() => {
           this.currentStocks = this.stocks;
           console.log("old stock",this.currentStocks);
-        }, 2000)
+        }, 200)
 
         // // add class color
         // this.stocks = this.stocks.map(el => ({
