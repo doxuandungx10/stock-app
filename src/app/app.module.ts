@@ -1,3 +1,4 @@
+import { IndexChartComponent } from './charts/index-chart/index-chart.component';
 import { StockDashboardComponent } from './stock-dashboard/stock-dashboard.component';
 import { StockTreemapComponent } from './stock-treemap/stock-treemap.component';
 import { ShareModule } from './shared/share.module';
@@ -1367,7 +1368,8 @@ export function configServiceFactory(config: AppConfigService) {
  SymFinanceComponent,
  StockBoardComponent,
  StockTreemapComponent,
- StockDashboardComponent
+ StockDashboardComponent,
+ IndexChartComponent
 
   ],
   imports: [

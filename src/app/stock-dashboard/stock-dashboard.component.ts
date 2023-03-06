@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockDashboardComponent implements OnInit {
   lstFundCode = ["TCBF", "TCEF", "TCFF"]
+  lstIndexSource = [
+    {
+      name: 'VN-INDEX',
+      id: '10'
+    },
+    {
+      name: 'VN30-INDEX',
+      id: '11'
+    },
+    {
+      name: 'HNX-INDEX',
+      id: '02'
+    },
+    {
+      name: 'UPCOM',
+      id: '03'
+    }
+  ]
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

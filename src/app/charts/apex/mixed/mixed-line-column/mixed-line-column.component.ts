@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import * as moment from 'moment';
 
 import {
   ChartComponent,
@@ -10,6 +11,7 @@ import {
   ApexTitleSubtitle,
   ApexXAxis
 } from "ng-apexcharts";
+import { ChartIndexService } from 'src/app/service/general-service/chart-index.service';
 
 export type ChartOptions = {
   series?: ApexAxisChartSeries | any;
@@ -27,22 +29,25 @@ export type ChartOptions = {
 @Component({
   selector: 'app-mixed-line-column',
   templateUrl: './mixed-line-column.component.html',
-  styleUrls: ['./mixed-line-column.component.css']
+  styleUrls: ['./mixed-line-column.component.css'],
+  providers: [ChartIndexService]
 })
 export class MixedLineColumnComponent implements OnInit {
-  @Input() fundCode = "";
+  @Input() indexSource: any;
+  @Input() fundCode = '';
+  lstData: any[] = [];
 
   @ViewChild("chart") chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  constructor() {
+  constructor(private chartIndexService: ChartIndexService) {
     this.chartOptions = {
       series: [
         {
           name: "Website Blog",
           type: "column",
-          data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160],
-          labels: {
+          data: [202201, 3915830, 6465882, 11017196, 15608851, 18077988, 20478652, 24548401, 27797029, 29367502, 30899277, 33164580, 36333076, 39648270, 43200534, 45691758, 48740337],
+          dataLabels: {
             style: {
               colors: "white"
             }
@@ -51,8 +56,8 @@ export class MixedLineColumnComponent implements OnInit {
         {
           name: "Social Media",
           type: "line",
-          data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16],
-          labels: {
+          data: [20529, 2069, 20726, 20774, 20804, 20781, 20767, 20778, 20742, 20713, 20702, 20679, 20685, 20643, 20643, 20594, 20561],
+          dataLabels: {
             style: {
               colors: "white"
             }
@@ -76,20 +81,12 @@ export class MixedLineColumnComponent implements OnInit {
         enabled: true,
         enabledOnSeries: [1]
       },
-      labels: [
-        "01 Jan 2001",
+      labels: ["01 Jan 2001",
         "02 Jan 2001",
         "03 Jan 2001",
         "04 Jan 2001",
         "05 Jan 2001",
-        "06 Jan 2001",
-        "07 Jan 2001",
-        "08 Jan 2001",
-        "09 Jan 2001",
-        "10 Jan 2001",
-        "11 Jan 2001",
-        "12 Jan 2001"
-      ],
+        "06 Jan 2001",],
       xaxis: {
         type: "datetime",
         labels: {
@@ -122,7 +119,30 @@ export class MixedLineColumnComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.fundCode);
+    console.log(this.indexSource);
+    this.createIndexChart();
+    this.getIndexChart();
+  }
+
+  getIndexChart() {
+    this.chartIndexService.getIndexChart(this.indexSource.id).subscribe((res:any) => {
+      for (let i=0; i<res.data.length; i=i+100) {
+        this.lstData.push(res.data[i])
+      };
+      console.log(this.lstData);
+      this.createIndexChart();
+    });
+  }
+
+  createIndexChart() {
+    this.chartOptions.title.text = this.indexSource.name;
+      this.lstData.forEach(element => {
+        this.chartOptions.series[0].data.push(element.vol);
+        this.chartOptions.series[1].data.push(element.cIndex);
+        let date = new Date(element.time)
+        // this.chartOptions.labels.push(element.time);
+      });
+    console.log(this.chartOptions);
   }
 
 }
