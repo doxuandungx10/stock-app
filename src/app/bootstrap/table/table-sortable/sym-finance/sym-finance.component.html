@@ -1,1 +1,76 @@
-<p>sym-finance works!</p>
+<div class="profile-tab">
+    <div class="custom-tab-1">
+    <ul class="nav nav-tabs tab-custom" ngbNav #nav="ngbNav">
+        <li class="nav-item" ngbNavItem="year"><a href="#year" data-toggle="tab" class="nav-link" ngbNavLink>Hằng năm</a>
+        <ng-template ngbNavContent>
+            <div class="card-body">
+                <div class="row">
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Kết quả kinh doanh</th>
+                            <th scope="col">Năm 2017</th>
+                            <th scope="col">Năm 2018</th>
+                            <th scope="col">Năm 2019</th>
+                            <th scope="col">Năm 2020</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of stockFinanceYear; index as i">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{data.Name}}</td>
+                            <td>{{toCurrencyFormat(data.Value4)}}</td>
+                            <td>{{toCurrencyFormat(data.Value3)}}</td>
+                            <td>{{toCurrencyFormat(data.Value2)}}</td>
+                            <td>{{toCurrencyFormat(data.Value1)}}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </ng-template>
+
+        </li>
+        <li class="nav-item" ngbNavItem="period"><a href="#period" data-toggle="tab" class="nav-link"
+            ngbNavLink>Hằng quý</a>
+        <ng-template ngbNavContent>
+            <div class="card-body">
+                <div class="row">
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Kết quả kinh doanh</th>
+                            <th scope="col">Quý 3 - 2020</th>
+                            <th scope="col">Quý 4 - 2020</th>
+                            <th scope="col">Quý 1 - 2021</th>
+                            <th scope="col">Quý 2 - 2021</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of stockFinancePeriod; index as i">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{data.Name}}</td>
+                            <td>{{toCurrencyFormat(data.Value4)}}</td>
+                            <td>{{toCurrencyFormat(data.Value3)}}</td>
+                            <td>{{toCurrencyFormat(data.Value2)}}</td>
+                            <td>{{toCurrencyFormat(data.Value1)}}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>                
+            </div>
+        </ng-template>
+        </li>
+    </ul>
+
+    <div [ngbNavOutlet]="nav" class=""></div>
+    </div>
+      <!-- Modal -->
+</div>
+
+
+<div class="row" style="justify-content: end;">
+    <span style="font-style: italic;">Đơn vị: triệu đồng</span>
+</div>

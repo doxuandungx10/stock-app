@@ -1,0 +1,8 @@
+.tab-custom {
+    border: none;
+    padding: 1rem 2rem 0rem;
+}
+
+.nav-link.acitve {
+    background-color: #6418C3 !important;
+}

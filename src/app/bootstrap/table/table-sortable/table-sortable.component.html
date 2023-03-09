@@ -144,7 +144,7 @@
           <li class="nav-item" ngbNavItem="profile-settings"><a href="#profile-settings" data-toggle="tab"
               class="nav-link" ngbNavLink>Tài chính</a>
             <ng-template ngbNavContent>
-              <app-sym-finance></app-sym-finance>
+              <app-sym-finance [sym]="selectedSym"></app-sym-finance>
             </ng-template>
           </li>
         </ul>
