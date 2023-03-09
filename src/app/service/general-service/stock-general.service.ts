@@ -7,4 +7,7 @@ export class StockGeneralService extends BaseService {
   getListStock(data): Observable<any[]> {
     return this.get('/getliststockdata/' + data);
   }
+  getBaseWorldIndex(): Observable<any[]> {
+    return this.get('/getlistbaseworldindex');
+  }
 }

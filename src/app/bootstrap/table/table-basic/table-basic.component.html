@@ -16,16 +16,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of topMover">
-        <td>{{ item.ticker }}</td>
-        <td>{{ item.sectorName }}</td>
-        <td>{{ item.referencePrice }}</td>
-        <td>{{ item.ceilingPrice }}</td>
-        <td>{{ item.floorPrice }}</td>
-        <td>{{ item.volume }}</td>
-        <td>{{ item.price }}</td>
-        <td>{{ item.percentPriceChange }}</td>
-        <td>{{ item.value }}</td>
-        <td>{{ item.rank }} / {{ item.totalRank }}</td>
+        <td [ngClass]="{'stock-r': item.percentPriceChange == 0, 'status-i': item.percentPriceChange > 0, 'status-d': item.percentPriceChange < 0}">{{ item.ticker }}</td>
+        <td [ngClass]="{'stock-r': item.percentPriceChange == 0, 'status-i': item.percentPriceChange > 0, 'status-d': item.percentPriceChange < 0}">{{ item.sectorName }}</td>
+        <td class="stock-r">{{ item.referencePrice }}</td>
+        <td class="stock-c">{{ item.ceilingPrice }}</td>
+        <td class="stock-f">{{ item.floorPrice }}</td>
+        <td [ngClass]="{'stock-r': item.percentPriceChange == 0, 'status-i': item.percentPriceChange > 0, 'status-d': item.percentPriceChange < 0}">{{ item.volume }}</td>
+        <td [ngClass]="{'stock-r': item.percentPriceChange == 0, 'status-i': item.percentPriceChange > 0, 'status-d': item.percentPriceChange < 0}">{{ item.price }}</td>
+        <td [ngClass]="{'stock-r': item.percentPriceChange == 0, 'status-i': item.percentPriceChange > 0, 'status-d': item.percentPriceChange < 0}">{{ item.percentPriceChange }}</td>
+        <td [ngClass]="{'stock-r': item.percentPriceChange == 0, 'status-i': item.percentPriceChange > 0, 'status-d': item.percentPriceChange < 0}">{{ item.value }}</td>
+        <td [ngClass]="{'stock-r': item.percentPriceChange == 0, 'status-i': item.percentPriceChange > 0, 'status-d': item.percentPriceChange < 0}">{{ item.rank }} / {{ item.totalRank }}</td>
       </tr>
     </tbody>
   </table>

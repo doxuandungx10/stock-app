@@ -13,6 +13,23 @@
       </div>
     </div>
 
+    <div class="row">
+			<div class="col-xl-3" *ngFor="let item of lstBaseWorldIndex">
+        <div class="card">
+          <div class="card-header header-index">
+            <div class="status-i">{{item.index}}</div>
+            <div>{{item.last}}</div>
+          </div>
+          <div>
+            <div class="card-content content-index">
+              <div [ngClass]="{'status-i': item.change.charAt(0) == '+', 'status-d': item.change.charAt(0) == '-'}">{{item.change}}</div>
+              <div [ngClass]="{'status-i': item.changePc.charAt(0) == '+', 'status-d': item.changePc.charAt(0) == '-'}">{{item.changePc}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- <div class="row">
       <div class="col-lg-12">
         <div class="card">

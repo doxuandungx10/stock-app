@@ -1,3 +1,35 @@
 .nav-tabs {
   margin: 1rem;
 }
+
+.header-index {
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-index {
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-i {
+  color: #20FF00;
+}
+
+.status-d {
+  color: #FF373A;
+}
+
+.stock-r {
+  color: #FFC249;
+}
+
+.stock-c {
+  color: #FF25E5;
+}
+
+.stock-f {
+  color: #33EEEE;
+}
